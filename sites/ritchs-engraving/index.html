@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ritch's Engraving | Master Hand & Laser Engraving — Cape Town</title>
+  <meta name="description" content="25+ years of master hand and laser engraving in Bo-Kaap, Cape Town. Jewellery, firearms, crystal, family crests, and bespoke designs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --charcoal: #1a1a1a;
+      --smoke: #2a2a2a;
+      --ash: #888888;
+      --silver: #c0c0c0;
+      --gold: #c9a84c;
+      --gold-dim: #8a6f2e;
+      --copper: #b87333;
+      --cream: #f0ebe3;
+      --white: #fafafa;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--black);
+      color: var(--cream);
+    }
+
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--silver);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201, 168, 76, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 80% at 20% 80%, rgba(184, 115, 51, 0.04) 0%, transparent 60%),
+        linear-gradient(180deg, var(--black) 0%, #0d0d0d 50%, var(--dark) 100%);
+    }
+
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold-dim) 30%, var(--gold) 50%, var(--gold-dim) 70%, transparent 100%);
+      opacity: 0.15;
+      transform: translateY(-50%);
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 2rem;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s 0.3s ease forwards;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1.2s 0.5s ease forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--ash);
+      letter-spacing: 0.05em;
+      max-width: 500px;
+      margin: 0 auto 3rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s 0.8s ease forwards;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      border: 1px solid var(--gold-dim);
+      transition: all 0.4s;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s 1s ease forwards;
+    }
+
+    .hero-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 1s 1.3s ease forwards;
+    }
+
+    .hero-scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ash);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, var(--gold-dim), transparent);
+      animation: scrollPulse 2s ease infinite;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative;
+    }
+
+    .section-pad {
+      padding: 8rem 3rem;
+    }
+
+    /* ── CRAFT STATEMENT ── */
+    .craft {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      background: var(--dark);
+      border-top: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    .craft-inner {
+      max-width: 750px;
+      text-align: center;
+    }
+
+    .craft-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--cream);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .craft-quote.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .craft-quote span {
+      color: var(--gold);
+    }
+
+    .craft-attribution {
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ash);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .craft-attribution.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      background: var(--black);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--cream);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(201, 168, 76, 0.08);
+    }
+
+    .service-card {
+      background: var(--black);
+      padding: 3.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .service-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.03) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      display: block;
+      filter: grayscale(0.5);
+      transition: filter 0.4s;
+    }
+
+    .service-card:hover .service-icon { filter: grayscale(0); }
+
+    .service-card h3 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      color: var(--ash);
+      line-height: 1.7;
+    }
+
+    .service-materials {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .material-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      padding: 0.3rem 0.6rem;
+      border: 1px solid rgba(201, 168, 76, 0.15);
+    }
+
+    /* ── SHOWCASE / GALLERY ── */
+    .showcase {
+      background: var(--dark);
+      border-top: 1px solid rgba(201, 168, 76, 0.08);
+      overflow: hidden;
+    }
+
+    .showcase-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 300px);
+      gap: 3px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--charcoal);
+    }
+
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+
+    .gallery-item .gallery-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--ash);
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-item .gallery-icon {
+      font-size: 3rem;
+      filter: grayscale(0.8);
+      transition: all 0.6s;
+    }
+
+    .gallery-item:hover .gallery-bg { transform: scale(1.05); }
+    .gallery-item:hover .gallery-icon { filter: grayscale(0); transform: scale(1.1); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(10, 10, 10, 0.9) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-overlay h4 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--cream);
+    }
+
+    .gallery-overlay p {
+      font-size: 0.7rem;
+      color: var(--ash);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* ── HERITAGE ── */
+    .heritage {
+      background: var(--black);
+      border-top: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    .heritage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .heritage-visual {
+      position: relative;
+      aspect-ratio: 3/4;
+      background: var(--charcoal);
+      overflow: hidden;
+    }
+
+    .heritage-visual-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background:
+        radial-gradient(ellipse at center, rgba(201, 168, 76, 0.06) 0%, transparent 70%),
+        var(--charcoal);
+    }
+
+    .heritage-number {
+      font-family: var(--serif);
+      font-size: 8rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--gold);
+      opacity: 0.3;
+    }
+
+    .heritage-number-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--ash);
+    }
+
+    .heritage-frame {
+      position: absolute;
+      inset: 1rem;
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      pointer-events: none;
+    }
+
+    .heritage-text h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    .heritage-text p {
+      font-size: 0.9rem;
+      color: var(--ash);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .heritage-text p strong {
+      color: var(--cream);
+      font-weight: 400;
+    }
+
+    .heritage-detail {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+    }
+
+    .heritage-detail-item h4 {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--gold);
+    }
+
+    .heritage-detail-item span {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ash);
+    }
+
+    /* ── CONTACT / CTA ── */
+    .contact {
+      background: var(--dark);
+      border-top: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    .contact-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-subtitle {
+      font-size: 0.9rem;
+      color: var(--ash);
+      margin-bottom: 3rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .contact-method {
+      padding: 2rem;
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      transition: border-color 0.4s;
+    }
+
+    .contact-method:hover {
+      border-color: rgba(201, 168, 76, 0.3);
+    }
+
+    .contact-method-icon {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-method h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-method p, .contact-method a {
+      font-size: 0.85rem;
+      color: var(--ash);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-method a:hover { color: var(--gold); }
+
+    .contact-cta {
+      display: inline-block;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--black);
+      background: var(--gold);
+      padding: 1.2rem 3.5rem;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: all 0.4s;
+    }
+
+    .contact-cta:hover {
+      background: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(201, 168, 76, 0.08);
+      padding: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    .footer-text {
+      font-size: 0.7rem;
+      color: var(--ash);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 200px);
+      }
+      .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+      .heritage-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .heritage-visual { max-height: 400px; }
+      .contact-methods { grid-template-columns: 1fr; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .section-pad { padding: 5rem 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item:nth-child(1) { grid-column: span 1; }
+      .gallery-item { height: 250px; }
+      .heritage-detail { flex-direction: column; gap: 1.5rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Ritch's</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Work</a></li>
+      <li><a href="#heritage">Heritage</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grain"></div>
+    <div class="hero-line"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Bo-Kaap, Cape Town &mdash; Est. 25+ Years</p>
+      <h1 class="hero-title">The Art of<br><em>Engraving</em></h1>
+      <p class="hero-subtitle">Master hand and laser engraving on metal, glass, crystal, stone, and wood. Every mark tells a story.</p>
+      <a href="#contact" class="hero-cta">Commission a Piece</a>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- CRAFT STATEMENT -->
+  <section class="craft section-pad">
+    <div class="craft-inner">
+      <blockquote class="craft-quote reveal">
+        Where machine meets <span>mastery</span>, and every surface becomes a canvas for permanence.
+      </blockquote>
+      <p class="craft-attribution reveal">Hand & Laser Engraving Since 1999</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services section-pad">
+    <div class="services-header">
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="section-title reveal">Precision on<br>Every Surface</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">&#9830;</span>
+        <h3>Jewellery &amp; Watches</h3>
+        <p>Rings, bracelets, pendants, watch case-backs. Delicate hand engraving that transforms precious metals into heirlooms.</p>
+        <div class="service-materials">
+          <span class="material-tag">Gold</span>
+          <span class="material-tag">Silver</span>
+          <span class="material-tag">Platinum</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#9876;</span>
+        <h3>Firearms &amp; Knives</h3>
+        <p>Relief engraving, scrollwork, and custom scenes on receivers, slides, and blades. Functional art for collectors.</p>
+        <div class="service-materials">
+          <span class="material-tag">Steel</span>
+          <span class="material-tag">Damascus</span>
+          <span class="material-tag">Titanium</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#9827;</span>
+        <h3>Glass &amp; Crystal</h3>
+        <p>Hand-engraved trophies, decanters, and awards. From corporate recognition to personal milestones.</p>
+        <div class="service-materials">
+          <span class="material-tag">Crystal</span>
+          <span class="material-tag">Glass</span>
+          <span class="material-tag">Stone</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#9733;</span>
+        <h3>Trophies &amp; Awards</h3>
+        <p>Laser-precise lettering on tankards, shields, plaques, and cups. Bulk corporate orders welcome.</p>
+        <div class="service-materials">
+          <span class="material-tag">Brass</span>
+          <span class="material-tag">Pewter</span>
+          <span class="material-tag">Wood</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#9888;</span>
+        <h3>Family Crests &amp; Logos</h3>
+        <p>Heraldic crests, monograms, and company logos reproduced with exacting detail on any substrate.</p>
+        <div class="service-materials">
+          <span class="material-tag">Any Surface</span>
+          <span class="material-tag">Custom Design</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#10022;</span>
+        <h3>Bespoke Commissions</h3>
+        <p>If it can be marked, we can engrave it. Lighters, pens, instruments, industrial parts &mdash; all fonts, all languages.</p>
+        <div class="service-materials">
+          <span class="material-tag">All Materials</span>
+          <span class="material-tag">All Languages</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE -->
+  <section id="gallery" class="showcase section-pad">
+    <div class="showcase-header">
+      <p class="section-label reveal">Portfolio</p>
+      <h2 class="section-title reveal">Selected Works</h2>
+    </div>
+    <div class="gallery-grid reveal-scale">
+      <div class="gallery-item">
+        <div class="gallery-bg">
+          <span class="gallery-icon">&#9830;</span>
+        </div>
+        <div class="gallery-overlay">
+          <h4>Silver Relief Box</h4>
+          <p>Hand Engraving &middot; Sterling Silver</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg">
+          <span class="gallery-icon">&#9876;</span>
+        </div>
+        <div class="gallery-overlay">
+          <h4>Custom Knife Scrollwork</h4>
+          <p>Relief Engraving &middot; Damascus Steel</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg">
+          <span class="gallery-icon">&#9733;</span>
+        </div>
+        <div class="gallery-overlay">
+          <h4>Corporate Trophy Set</h4>
+          <p>Laser Engraving &middot; Crystal</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg">
+          <span class="gallery-icon">&#10070;</span>
+        </div>
+        <div class="gallery-overlay">
+          <h4>Heraldic Family Crest</h4>
+          <p>Hand Engraving &middot; Brass</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg">
+          <span class="gallery-icon">&#9827;</span>
+        </div>
+        <div class="gallery-overlay">
+          <h4>Wedding Ring Detail</h4>
+          <p>Hand Engraving &middot; 18k Gold</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg">
+          <span class="gallery-icon">&#10022;</span>
+        </div>
+        <div class="gallery-overlay">
+          <h4>Zippo Collection</h4>
+          <p>Laser Engraving &middot; Brass</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERITAGE -->
+  <section id="heritage" class="heritage section-pad">
+    <div class="heritage-grid">
+      <div class="heritage-visual reveal-scale">
+        <div class="heritage-visual-inner">
+          <span class="heritage-number">25</span>
+          <span class="heritage-number-label">Years of Mastery</span>
+        </div>
+        <div class="heritage-frame"></div>
+      </div>
+      <div class="heritage-text">
+        <h3 class="reveal">A quarter century of marks that last forever</h3>
+        <p class="reveal">From a workshop on <strong>Wale Street in the heart of Bo-Kaap</strong>, Ritch has spent over two decades turning raw surfaces into lasting statements. What began as a passion for the burin has grown into Cape Town's most trusted name in both traditional hand engraving and modern laser work.</p>
+        <p class="reveal">Every piece &mdash; whether a signet ring, a firearm receiver, or a crystal trophy &mdash; receives the same unhurried attention. <strong>No templates, no shortcuts.</strong> Each commission is drawn, discussed, and executed by hand or precision laser to tolerances measured in fractions of a millimetre.</p>
+        <div class="heritage-detail reveal">
+          <div class="heritage-detail-item">
+            <h4>2</h4>
+            <span>Techniques &mdash; Hand &amp; Laser</span>
+          </div>
+          <div class="heritage-detail-item">
+            <h4>&infin;</h4>
+            <span>Materials &amp; Languages</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact section-pad">
+    <div class="contact-inner">
+      <p class="section-label reveal">Get in Touch</p>
+      <h2 class="contact-title reveal">Start Your Commission</h2>
+      <p class="contact-subtitle reveal">Whether it's a single ring or a corporate order of 500 trophies, every project begins with a conversation.</p>
+      <div class="contact-methods reveal">
+        <div class="contact-method">
+          <div class="contact-method-icon">&#9742;</div>
+          <h4>Call</h4>
+          <a href="tel:+27836447669">083 644 7669</a>
+        </div>
+        <div class="contact-method">
+          <div class="contact-method-icon">&#9993;</div>
+          <h4>Email</h4>
+          <a href="mailto:ritch@ritchsengraving.co.za">ritch@ritchsengraving.co.za</a>
+        </div>
+        <div class="contact-method">
+          <div class="contact-method-icon">&#9962;</div>
+          <h4>Visit</h4>
+          <p>65 Wale Street<br>Bo-Kaap, Cape Town</p>
+        </div>
+      </div>
+      <a href="mailto:ritch@ritchsengraving.co.za?subject=Engraving%20Commission" class="contact-cta reveal">Request a Quote</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Ritch's Engraving</span>
+    <span class="footer-text">&copy; 2026 &mdash; Bo-Kaap, Cape Town</span>
+  </footer>
+
+  <script>
+    // Scroll-triggered reveals
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-scale, .craft-quote, .craft-attribution, .service-card')
+      .forEach(el => observer.observe(el));
+
+    // Stagger service cards
+    const cards = document.querySelectorAll('.service-card');
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          const idx = Array.from(cards).indexOf(entry.target);
+          entry.target.style.transitionDelay = `${idx * 0.1}s`;
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    cards.forEach(el => cardObserver.observe(el));
+
+    // Nav background on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    // Smooth parallax on hero line
+    const heroLine = document.querySelector('.hero-line');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < window.innerHeight) {
+        heroLine.style.opacity = 0.15 - (window.scrollY / window.innerHeight) * 0.15;
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
