@@ -104,9 +104,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201, 168, 76, 0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 80% at 20% 80%, rgba(184, 115, 51, 0.04) 0%, transparent 60%),
-        linear-gradient(180deg, var(--black) 0%, #0d0d0d 50%, var(--dark) 100%);
+        linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.6) 80%, var(--dark) 100%),
+        url('images/hero.png') center/cover no-repeat;
     }
 
     .hero-grain {
@@ -433,24 +432,12 @@
     .gallery-item .gallery-bg {
       position: absolute;
       inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      font-style: italic;
-      color: var(--ash);
+      background-size: cover;
+      background-position: center;
       transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .gallery-item .gallery-icon {
-      font-size: 3rem;
-      filter: grayscale(0.8);
-      transition: all 0.6s;
-    }
-
     .gallery-item:hover .gallery-bg { transform: scale(1.05); }
-    .gallery-item:hover .gallery-icon { filter: grayscale(0); transform: scale(1.1); }
 
     .gallery-overlay {
       position: absolute;
@@ -512,7 +499,8 @@
       justify-content: center;
       gap: 1rem;
       background:
-        radial-gradient(ellipse at center, rgba(201, 168, 76, 0.06) 0%, transparent 70%),
+        linear-gradient(180deg, rgba(26,26,26,0.4) 0%, rgba(26,26,26,0.2) 50%, rgba(26,26,26,0.6) 100%),
+        url('images/heritage.png') center/cover no-repeat,
         var(--charcoal);
     }
 
@@ -868,54 +856,42 @@
     </div>
     <div class="gallery-grid reveal-scale">
       <div class="gallery-item">
-        <div class="gallery-bg">
-          <span class="gallery-icon">&#9830;</span>
-        </div>
+        <div class="gallery-bg" style="background-image: url('images/gallery-1-silver-box.png')"></div>
         <div class="gallery-overlay">
           <h4>Silver Relief Box</h4>
           <p>Hand Engraving &middot; Sterling Silver</p>
         </div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-bg">
-          <span class="gallery-icon">&#9876;</span>
-        </div>
+        <div class="gallery-bg" style="background-image: url('images/gallery-2-knife.png')"></div>
         <div class="gallery-overlay">
           <h4>Custom Knife Scrollwork</h4>
           <p>Relief Engraving &middot; Damascus Steel</p>
         </div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-bg">
-          <span class="gallery-icon">&#9733;</span>
-        </div>
+        <div class="gallery-bg" style="background-image: url('images/gallery-3-trophy.png')"></div>
         <div class="gallery-overlay">
           <h4>Corporate Trophy Set</h4>
           <p>Laser Engraving &middot; Crystal</p>
         </div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-bg">
-          <span class="gallery-icon">&#10070;</span>
-        </div>
+        <div class="gallery-bg" style="background-image: url('images/gallery-4-crest.png')"></div>
         <div class="gallery-overlay">
           <h4>Heraldic Family Crest</h4>
           <p>Hand Engraving &middot; Brass</p>
         </div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-bg">
-          <span class="gallery-icon">&#9827;</span>
-        </div>
+        <div class="gallery-bg" style="background-image: url('images/gallery-5-ring.png')"></div>
         <div class="gallery-overlay">
           <h4>Wedding Ring Detail</h4>
           <p>Hand Engraving &middot; 18k Gold</p>
         </div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-bg">
-          <span class="gallery-icon">&#10022;</span>
-        </div>
+        <div class="gallery-bg" style="background-image: url('images/gallery-6-zippo.png')"></div>
         <div class="gallery-overlay">
           <h4>Zippo Collection</h4>
           <p>Laser Engraving &middot; Brass</p>
