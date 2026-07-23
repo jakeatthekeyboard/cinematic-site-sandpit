@@ -7,7 +7,22 @@ import time
 from google import genai
 from google.genai import types
 
-client = genai.Client(api_key="AIzaSyD_goDtJUANpLN2XwcKpinEMg3aoNhYypQ")
+def _api_key():
+    """Gemini API key, environment only.
+
+    This file used to carry a hardcoded key as a literal default. It leaked to a
+    PUBLIC repo, Google's automated scanner caught it, and the key now returns
+    403 PERMISSION_DENIED "Your API key was reported as leaked." Never inline a
+    credential again -- fail loud instead, so a missing key is a clear error
+    rather than a silent fallback to a committed secret.
+    """
+    key = os.environ.get("GEMINI_API_KEY")
+    if not key:
+        sys.exit("GEMINI_API_KEY is not set. export GEMINI_API_KEY=... and re-run.")
+    return key
+
+
+client = genai.Client(api_key=_api_key())
 IMAGE_DIR = os.path.join(os.path.dirname(__file__), "images")
 
 remaining = [
